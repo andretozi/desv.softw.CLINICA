@@ -34,7 +34,7 @@ if __name__ == "__main__":
     tk.Label(menu_frame, text="Clínica Médica", font=("Arial", 24, "bold"),
              bg="#f5f7fa", fg="#333").pack(pady=40)
 
-    tk.Button(menu_frame, text="Cadastro Paciente", command=show_cadastro, **btn_style).pack(pady=15)
+    tk.Button(menu_frame, text="Cadastro Usuário", command=show_cadastro, **btn_style).pack(pady=15)
     tk.Button(menu_frame, text="Agendar Consulta", command=show_agendamento, **btn_style).pack(pady=15)
     tk.Button(menu_frame, text="Ver Consultas", command=agendamento_frame.ver_consultas, **btn_style).pack(pady=15)
 
