@@ -46,6 +46,7 @@ class Cadastro(tk.Frame):
         tk.Button(self, text="Salvar", command=self.salvar_usuario, **self.btn_style).pack(pady=15)
         tk.Button(self, text="Voltar", command=self.voltar_callback, **self.btn_style).pack(pady=10)
 
+
     def salvar_usuario(self):
         nome = self.entry_nome.get()
         idade = self.entry_idade.get()

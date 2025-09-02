@@ -1,5 +1,6 @@
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import messagebox, ttk
+
 
 class AgendarConsulta(tk.Frame):
     def __init__(self, root, voltar_callback):
@@ -38,8 +39,22 @@ class AgendarConsulta(tk.Frame):
         self.entry_data.grid(row=2, column=1, pady=5, padx=10)
 
         tk.Button(self, text="Salvar", command=self.salvar_consulta, **self.btn_style).pack(pady=10)
-        tk.Button(self, text="Ver Consultas", command=self.ver_consultas, **self.btn_style).pack(pady=5)
         tk.Button(self, text="Voltar", command=self.voltar_callback, **self.btn_style).pack(pady=20)
+
+    def voltar(self):
+
+        for widget in self.winfo_children():
+            if isinstance(widget, tk.Entry):
+                widget.delete(0, tk.END)
+            elif isinstance(widget, ttk.Combobox):
+                widget.set('')
+            elif isinstance(widget, tk.Text):
+                widget.delete('1.0', tk.END)
+            elif isinstance(widget, ttk.Treeview):
+                for item in widget.get_children():
+                    widget.delete(item)
+
+        self.voltar_callback()
 
     def salvar_consulta(self):
         medico = self.entry_medico.get()
@@ -80,4 +95,4 @@ class AgendarConsulta(tk.Frame):
                     font=("Arial", 12), bg="#f5f7fa", justify="left"
                 ).pack(pady=5)
 
-        tk.Button(self, text="Voltar", command=self.voltar_callback, **self.btn_style).pack(pady=20)
+        tk.Button(self, text="Voltar", command=self.voltar, **self.btn_style).pack(pady=20)
